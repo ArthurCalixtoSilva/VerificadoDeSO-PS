@@ -1,6 +1,5 @@
-# Lista de IPs
 $ips = @(
-    "172.16.2.111", "172.16.2.118", "172.16.2.126" # etc...
+    "172.16.2.111", "172.16.2.118", "172.16.2.126"
 )
 
 function Get-WindowsVersion {
@@ -15,11 +14,11 @@ function Get-WindowsVersion {
 $resultados = @()
 
 foreach ($ip in $ips) {
-    Write-Host "`n🔍 Pingando $ip ..."
+    Write-Host "`n Pingando $ip ..."
     $ping = Test-Connection -ComputerName $ip -Count 3 -Quiet
 
     if ($ping) {
-        Write-Host "✅ Host está online. Obtendo informações do sistema..."
+        Write-Host "Host está online. Obtendo informações do sistema..."
 
         try {
             $os = Get-WmiObject -Class Win32_OperatingSystem -ComputerName $ip -ErrorAction Stop
